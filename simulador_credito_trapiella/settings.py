@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
+import dj_database_url
 from pathlib import Path
 
 from django.conf.global_settings import LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL
@@ -76,15 +77,13 @@ WSGI_APPLICATION = 'simulador_credito_trapiella.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'TPtrapiella',
-        'USER': 'postgres',
-        'PASSWORD': '43760334_',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config (
+        default = 'postgresql://proyectodjango_2o50_user:UNXxThQthAI1ZYei9EX2beWXfhWXkphS@dpg-d19glbqli9vc73806j20-a.oregon-postgres.render.com/proyectodjango_2o50',
+        conn_max_age= 600,
+        ssl_require= True
+    )
 }
+
 
 
 # Password validation

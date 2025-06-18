@@ -1,9 +1,14 @@
 services:
-  -  type: web
-     name: proyectoDjango
-     env: python
-     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
-     startCommand: "gunicorn simulador_credito_trapiella.wsgi:application"
-     envVars:
-       - key: DJANGO_SETTINGS_MODULE
-         value: simulador_credito_trapiella.settings
+  - type: web
+    name: proyectodjango
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt &&
+      python manage.py migrate &&
+      python manage.py collectstatic --noinput
+    startCommand: "gunicorn mi_sitio.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: mi_sitio.settings
+      - key: DATABASE_URL
+        value: postgresql://proyectodjango_2o50_user:UNXxThQthAI1ZYei9EX2beWXfhWXkphS@dpg-d19glbqli9vc73806j20-a.oregon-postgres.render.com/proyectodjango_2o50
