@@ -1,0 +1,47 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} Credito Hipotecario {% endblock %}</title>
+
+    <!-- Estilos globales-->
+       {% load static %}
+
+<link rel="stylesheet" href="{% static 'css/globalStyles.css' %}">
+
+
+    <!-- Estilos de cada aplicacion-->
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+{% include 'header.html' %}
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+{% include 'footer.html' %}
+
+{% block extra_js %}
+<script src="{% static 'mi_appss/scripts.js' %}"></script>
+{% endblock %}
+
+
+<div class="container mt-5">
+    <h2>Registro</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+    </form>
+    <p>¿Ya tenes cuenta? <a href="{% url 'login' %}">Iniciar sesion</a></p>
+</div>
+
+
+</body>
+</html>

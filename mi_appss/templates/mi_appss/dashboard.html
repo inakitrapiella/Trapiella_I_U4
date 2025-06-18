@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="form-section">
+    <h2 class="text-center">Listado de Consultas</h2>
+
+    <div class="form-requisitos-container">
+        <div style="flex: 2;">
+            <table class="table-consultas">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Mensaje</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for consulta in consultas %}
+                    <tr>
+                        <td>{{ consulta.nombre }}</td>
+                        <td>{{ consulta.email }}</td>
+                        <td>{{ consulta.mensaje }}</td>
+                        <td>
+                            <button class="btn-modificar">Modificar</button>
+                            <button class="btn-eliminar">Eliminar</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="importante">
+            <h3>Sesión activa</h3>
+            <p>Estás logueado como <strong>{{ request.user.username }}</strong></p>
+            <hr>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="boton-cta">Cerrar sesión</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="informe">
+    <h2>Gracias por usar el sistema</h2>
+    <p class="nota">Tu información se mantiene segura y confidencial.</p>
+</section>
+{% endblock %}

@@ -1,0 +1,9 @@
+services:
+  -  type: web
+     name: proyectoDjango
+     env: python
+     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+     startCommand: "gunicorn simulador_credito_trapiella.wsgi:application"
+     envVars:
+       - key: DJANGO_SETTINGS_MODULE
+         value: simulador_credito_trapiella.settings

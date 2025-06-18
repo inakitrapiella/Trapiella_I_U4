@@ -1,0 +1,18 @@
+{% load static %}
+
+
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo Finanzas Raiz">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'login' %}" class="boton-cta">INICIAR SESION</a></li>
+                <li><a href="{% url 'nosotros' %}">SOBRE NOSOTROS</a></li>
+                <li><a href="{% url 'contacto' %}">CONTACTO</a></li>
+                <li><a class="boton-cta" href="{% url 'index' %}">SIMULA TU CREDITO</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

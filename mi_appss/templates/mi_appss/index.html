@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Credito Hipotecario</h1>
+        <p>Tu casa a un boton.</p>
+    </div>
+</section>
+
+<section class="form-section">
+    <h2>Completa el formulario para aplicar.</h2>
+    <div class="form-requisitos-container">
+<form class="simulador-form" method="POST" id="id_simulador">
+    {% csrf_token %}
+
+    <div class="form-row">
+        <div>
+            {{ form.nombre_apellido.errors }}
+            {{ form.nombre_apellido }}
+        </div>
+        <div>
+            {{ form.edad.errors }}
+            {{ form.edad }}
+        </div>
+    </div>
+
+    <div>
+        {{ form.email.errors }}
+        {{ form.email }}
+    </div>
+
+    <div>
+        {{ form.celular.errors }}
+        {{ form.celular }}
+    </div>
+
+    <div>
+        {{ form.ingreso_mensual.errors }}
+        <input type="number" name="ingreso_mensual" placeholder="Ingreso bruto mensual (en pesos)" class="campo-pesos">
+    </div>
+
+    <div>
+        {{ form.valor_propiedad.errors }}
+        <input type="number" name="valor_propiedad" placeholder="Valor de la propiedad (en pesos)" class="campo-pesos">
+    </div>
+
+    <div>
+        {{ form.ahorros.errors }}
+        <input type="number" name="ahorros" placeholder="Ahorros disponibles (en pesos)" class="campo-pesos">
+    </div>
+
+    <button type="submit">SIMULAR</button>
+</form>
+
+        {% if mensajeexito %}
+        <div class="mensaje-exito">{{ mensajeexito }}</div>
+        {% endif %}
+
+        <div class="requisitos">
+            <h3>Requisitos</h3>
+            <p>Tener mayoria de edad (18 años)</p>
+            <hr>
+            <p>Tener una antiguedad laboral minima de 1 año para trabajadores en relacion de dependencia y 2 años para trabajadores independientes</p>
+            <hr>
+            <p>Tener un ahorro minimo del 20% del valor del inmueble</p>
+        </div>
+
+        <div class="importante">
+            <h3>Importante</h3>
+            <p>El plazo maximo de financiamiento es de 30 años</p>
+            <hr>
+            <p>El porcentaje maximo a retener siempre es el 30% del ingreso neto mensual</p>
+            <hr>
+            <p>La tasa de interes bancaria, aplicable sobre el importe solicitado al banco, es del 6,5% mensual</p>
+        </div>
+    </div>
+</section>
+
+<section class="informe">
+    <h2>Informe de Financiamiento.</h2>
+    <div class="informe-grid">
+        <div>
+            <h4>1. Cliente</h4>
+            <p>Iñaki Trapiella</p>
+        </div>
+        <div>
+            <h4>2. Importe solicitado</h4>
+            <p>$ 90,000,000</p>
+        </div>
+        <div>
+            <h4>3. Plazo</h4>
+            <p>120 cuotas</p>
+        </div>
+        <div>
+            <h4>4. Cuota mensual</h4>
+            <p>$ 750,000</p>
+        </div>
+    </div>
+    <p class="nota">El importe solicitado incluye la tasa de interes bancaria del 6,5% mensual</p>
+</section>
+
+{% endblock %}

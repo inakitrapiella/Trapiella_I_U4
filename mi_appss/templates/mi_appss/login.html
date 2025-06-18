@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="form-section">
+    <h2>Iniciar Sesión</h2>
+
+    {% if form.errors %}
+        <div class="mensaje-exito" style="background-color: #ffcdd2; color: #b71c1c; padding: 10px; border-radius: 4px;">
+            Usuario o contraseña incorrectos. Intentá nuevamente.
+        </div>
+    {% endif %}
+
+    <div class="form-requisitos-container">
+        <form method="post" class="simulador-form">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <div>
+                    <label for="username">Usuario:</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+            </div>
+
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <div class="importante">
+            <h3>¿No tenes cuenta?</h3>
+            <p>Registrate gratuitamente para acceder al panel de simulacion.</p>
+            <hr>
+            <a href="{% url 'registro' %}" class="boton-cta">Registrate aca</a>
+        </div>
+    </div>
+</section>
+
+<section class="informe">
+    <h2>Accedé a tu panel</h2>
+    <p class="nota">Una vez que inicies sesión, podés ver tus simulaciones de crédito.</p>
+</section>
+{% endblock %}
