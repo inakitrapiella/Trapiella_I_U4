@@ -83,19 +83,19 @@
     <div class="informe-grid">
         <div>
             <h4>1. Cliente</h4>
-            <p>Iñaki Trapiella</p>
+            <p>{{ nombre }}</p>
         </div>
         <div>
             <h4>2. Importe solicitado</h4>
-            <p>$ 90,000,000</p>
+            <p>$ {{ total_pagar|floatformat:0 }}</p>
         </div>
         <div>
             <h4>3. Plazo</h4>
-            <p>120 cuotas</p>
+            <p>{{ plazo }} cuotas</p>
         </div>
         <div>
             <h4>4. Cuota mensual</h4>
-            <p>$ 750,000</p>
+            <p>$ {{ cuota|floatformat:0 }}</p>
         </div>
     </div>
     <p class="nota">El importe solicitado incluye la tasa de interes bancaria del 6,5% mensual</p>
